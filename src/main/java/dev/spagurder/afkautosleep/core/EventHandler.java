@@ -132,7 +132,7 @@ public class EventHandler {
 
     private static boolean hasOtherPlayer(Minecraft client) {
         if (client.level == null || client.player == null) return false;
-        return client.level.players().stream().anyMatch(player -> player != client.player);
+        return client.getConnection() != null && client.getConnection().getOnlinePlayers().size() > 1;
     }
 
     private static void disconnect(Minecraft client) {
